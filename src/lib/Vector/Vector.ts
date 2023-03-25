@@ -1,3 +1,17 @@
+/**
+ * # Functions to be added
+ * Subtract (Vector)=>void
+ * Multiply (number)=>void
+ * Divide (number)=>void
+ * Distance (Vector)=>number
+ * Magnitude ()=>number
+ * getAngle ()=>number 
+ * Dot (Vector)=>void
+ * Cross (Vector)=>void
+ * RotateX (number)=>void
+ * RotateY (number)=>void
+ * RotateZ (number)=>void
+ */
 export class Vector{
     
     public x:number = 0;
