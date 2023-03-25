@@ -9,4 +9,9 @@ export class Vector{
         this.y = y;
         this.z = z;
     }
+    public add = (v:Vector)=>{
+        this.x+=v.x;
+        this.y+=v.y;
+        this.z+=v.z;
+    }
 }
