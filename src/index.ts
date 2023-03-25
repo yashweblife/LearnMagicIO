@@ -1,7 +1,7 @@
-import { Converter } from 'showdown';
+import hljs from "highlight.js";
+import javascript from "highlight.js/lib/languages/javascript";
+import "highlight.js/styles/github-dark.css";
 import "./styles/index.scss";
-
-const t = new Converter();
-var op = t.makeHtml(''+document.getElementById('test')?.innerHTML)
-console.log(op) 
-document.body.append(op)
+hljs.registerLanguage("javascript", javascript);
+hljs.highlightAll();
+hljs.getLanguage("javascript");
