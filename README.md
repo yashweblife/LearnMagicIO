@@ -3,7 +3,7 @@ This project contains the explanation for many computer science topics. Its is p
 
 ## To Get Started With Developing
 
-**In your terminal, run this line.**
+**In your terminal, run these lines.**
 
 *Clone the repo*
 
