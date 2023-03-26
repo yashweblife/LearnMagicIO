@@ -115,4 +115,31 @@ export class Vector {
     this.y = this.x * Math.sin(angle) + this.y * Math.cos(angle);
     this.z = this.z;
   };
+  public clone = () => {
+    return new Vector(this.x, this.y, this.z);
+  };
+  public normalize = (val:number=1) => {
+    const m = Math.sqrt(this.x ** 2 + this.y ** 2 + this.z ** 2);
+    this.mul(val / m);
+  };
 }
+
+export function lerp(a:number,b:number,c:number){
+  return a+(b-a)*c
+}
+export function vectorAdd(a:Vector, b:Vector):Vector{}
+export function vectorAddArray(a:Vector[]):Vector{}
+export function vectorSubtract(a:Vector, b:Vector):Vector{}
+export function vectorSubtractArray(a:Vector[]):Vector{}
+export function vectorMultiply(a:Vector, b:Vector):Vector{}
+export function vectorMultiplyArray(a:Vector[]):Vector{}
+export function vectorAverageArray(a:Vector[]):Vector{}
+export function vectorRandom(a:number=-1, b:number=1):Vector{}
+export function vectorRandomArray(a:number=-1, b:number=1):Vector[]{}
+export function vectorLerp(a:Vector,b:Vector,c:number):Vector{}
+export function vecToMatrix(a:Vector){}
+export function largestVector(a:Vector[]){}
+export function smallestVector(a:Vector[]){}
+
+
+
