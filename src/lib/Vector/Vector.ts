@@ -111,18 +111,18 @@ export class Vector{
         return new Vector(x, y, z);
     }
     public rotateX = (angle: number) => {
-        this.x;
-        this.y * Math.cos(angle) - this.z * Math.sin(angle);
-        this.y * Math.sin(angle) + this.z * Math.cos(angle);
+        this.x = this.x;
+        this.y = this.y * Math.cos(angle) - this.z * Math.sin(angle);
+        this.z = this.y * Math.sin(angle) + this.z * Math.cos(angle);
       };
       public rotateY = (angle: number) => {
-        this.x * Math.cos(angle) + this.z * Math.sin(angle);
-        this.y;
-        -this.x * Math.sin(angle) + this.z * Math.cos(angle);
+        this.x = this.x * Math.cos(angle) + this.z * Math.sin(angle);
+        this.y = this.y;
+        this.z = -this.x * Math.sin(angle) + this.z * Math.cos(angle);
       };
       public rotateZ = (angle: number) => {
-        this.x * Math.cos(angle) - this.y * Math.sin(angle);
-        this.x * Math.sin(angle) + this.y * Math.cos(angle);
-        this.z;
+        this.x = this.x * Math.cos(angle) - this.y * Math.sin(angle);
+        this.y = this.x * Math.sin(angle) + this.y * Math.cos(angle);
+        this.z = this.z;
       };
 }
