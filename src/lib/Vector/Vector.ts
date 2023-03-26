@@ -1,20 +1,20 @@
 /**
  * ### Vector
- * Vectors is a simple way to keep account of positional data 
+ * Vectors is a simple way to keep account of positional data
  */
 
 export class Vector {
-  public x: number = 0;
-  public y: number = 0;
-  public z: number = 0;
-
   /**
    *
    * @param x : x value; default is 0
    * @param y : y value; default is 0
    * @param z : z value; default is 0
    */
-  constructor(x: number, y: number, z: number) {
+  constructor(
+    public x: number = 0,
+    public y: number = 0,
+    public z: number = 0
+  ) {
     this.x = x;
     this.y = y;
     this.z = z;
@@ -94,7 +94,7 @@ export class Vector {
    * @param v
    * @returns
    */
-  public cross = (v: Vector):Vector => {
+  public cross = (v: Vector): Vector => {
     const x = this.x * v.y - this.y * v.x;
     const y = this.y * v.z - this.z * v.y;
     const z = this.z * v.x - this.x * v.z;
