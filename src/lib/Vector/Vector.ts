@@ -20,49 +20,95 @@ export class Vector{
     public y:number = 0;
     public z:number = 0;
 
+    /**
+     * 
+     * @param x : x value; default is 0
+     * @param y : y value; default is 0
+     * @param z : z value; default is 0
+     */
     constructor (x:number, y:number, z:number) {
         this.x = x;
         this.y = y;
         this.z = z;
     }
+    /**
+     * adds a vector 
+     * @param v 
+     */
     public add = (v:Vector)=>{
         this.x+=v.x;
         this.y+=v.y;
         this.z+=v.z;
     }
+    /**
+     * subtracts a vector
+     * @param s 
+     */
     public sub = (s:Vector)=>{
         this.x-=s.x;
         this.y-=s.y;
         this.z-=s.z;
     }
+    /**
+     * multiplies vector with a number
+     * @param m 
+     */
     public mul = (m:number)=>{
         this.x*=m;
         this.y*=m;
         this.z*=m;
     }
+    /**
+     * divides vector with a number
+     * @param d 
+     */
     public div = (d:number)=>{
         this.x/=d;
         this.y/=d;
         this.z/=d;
     }
-    public dist = (v:Vector):number=>{
+    /**
+     * returns distance between vectors
+     * @param v 
+     * @returns 
+     */
+    public distance = (v:Vector):number=>{
         return Math.sqrt((this.x - v.x)**2 + (this.y - v.y)**2 + (this.z - v.z)**2);
     }
+    /**
+     * returns vector magnitude
+     * @returns 
+     */
     public mag = ():number=>{
         return Math.sqrt((this.x)**2 + (this.y)**2 + (this.z)**2);
     }
+    /**
+     * returns angle of the vector
+     * @returns 
+     */
     public angle = ():number=>{
         var angle = Math.atan2(this.y, this.x);
         var degrees = 180 * angle / Math.PI;
         return (360 + Math.round(degrees)) % 360;
     }
-    public dot = (v:Vector)=>{
-        this.x*v.x + this.y*v.y + this.z*v.z;
+    /**
+     * returns vector dot product
+     * @param v 
+     * @returns 
+     */
+    public dot = (v:Vector):number=>{
+        return this.x*v.x + this.y*v.y + this.z*v.z;
     }
+    /**
+     * returns vector cross product
+     * @param v 
+     * @returns 
+     */
     public cross = (v:Vector)=>{
-        this.x*v.y - this.y*v.x;
-        this.y*v.z - this.z*v.y;
-        this.z*v.x - this.x*v.z;
+        const x = this.x*v.y - this.y*v.x;
+        const y = this.y*v.z - this.z*v.y;
+        const z = this.z*v.x - this.x*v.z;
+        return new Vector(x, y, z);
     }
     public rotateX = (angle: number) => {
         this.x;
@@ -79,5 +125,4 @@ export class Vector{
         this.x * Math.sin(angle) + this.y * Math.cos(angle);
         this.z;
       };
-
 }
