@@ -1,17 +1,6 @@
 /**
- * # Functions to be added
- * Subtract (Vector)=>void
- * Multiply (number)=>void
- * Divide (number)=>void
- * Distance (Vector)=>number
- * Magnitude ()=>number
- * getAngle ()=>number
- * Dot (Vector)=>void
- * Cross (Vector)=>void
- * (number, number)=>number
- * RotateX (number)=>void
- * RotateY (number)=>void
- * RotateZ (number)=>void
+ * ### Vector
+ * Vectors is a simple way to keep account of positional data 
  */
 
 export class Vector {
@@ -105,7 +94,7 @@ export class Vector {
    * @param v
    * @returns
    */
-  public cross = (v: Vector) => {
+  public cross = (v: Vector):Vector => {
     const x = this.x * v.y - this.y * v.x;
     const y = this.y * v.z - this.z * v.y;
     const z = this.z * v.x - this.x * v.z;
