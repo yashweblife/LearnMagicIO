@@ -18,9 +18,9 @@ export class Color {
     this.r /= mag;
     this.g /= mag;
     this.b /= mag;
-    Math.floor(this.r);
-    Math.floor(this.g);
-    Math.floor(this.b);
+    Math.floor(this.r * val);
+    Math.floor(this.g * val);
+    Math.floor(this.b * val);
   }
 }
 export interface CanvasConstructor {
