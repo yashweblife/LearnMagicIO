@@ -35,6 +35,7 @@ export class Canvas {
   public size: Vector;
   public dom: HTMLCanvasElement = document.createElement("canvas");
   public c: CanvasRenderingContext2D = this.dom.getContext("2d")!;
+  public bound: DOMRect = this.dom.getBoundingClientRect();
   constructor(
     details: CanvasConstructor = {
       size: new Vector(500, 500),
@@ -45,11 +46,13 @@ export class Canvas {
     details.parent.append(this.dom);
     this.dom.width = this.size.x;
     this.dom.height = this.size.y;
+    this.bound = this.dom.getBoundingClientRect();
   }
   public setSize(val: Vector) {
     this.size = val;
     this.dom.width = this.size.x;
     this.dom.height = this.size.y;
+    this.bound = this.dom.getBoundingClientRect();
   }
   public start() {
     this.c.beginPath();
@@ -57,8 +60,8 @@ export class Canvas {
   public end() {
     this.c.closePath();
   }
-  public arc(details: CircleInterface) {
-    this.c.arc(details.pos.x, details.pos.y, details.radius, 0, Math.PI * 2);
+  public arc(pos: Vector, radius: number) {
+    this.c.arc(pos.x, pos.y, radius, 0, Math.PI * 2);
   }
   public rect(start: Vector, end: Vector) {
     this.c.rect(start.x, start.y, end.x, end.y);
@@ -85,5 +88,13 @@ export class Canvas {
   public stroke(color: string = "rgb(0,0,0)") {
     this.c.strokeStyle = color;
     this.c.stroke();
+  }
+  public text(
+    val: string,
+    pos: Vector,
+    offsetX: number = 0,
+    offsetY: number = 0
+  ) {
+    this.c.fillText(val, pos.x + offsetX, pos.y + offsetY);
   }
 }
