@@ -97,4 +97,10 @@ export class Canvas {
   ) {
     this.c.fillText(val, pos.x + offsetX, pos.y + offsetY);
   }
+  public drawImage(img: HTMLImageElement | HTMLVideoElement) {
+    this.c.drawImage(img,0,0, this.size.x, this.size.y);
+  }
+  public getImageData(){
+    return(this.c.getImageData(0,0,this.size.x, this.size.y))
+  }
 }
