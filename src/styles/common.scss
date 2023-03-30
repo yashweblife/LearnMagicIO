@@ -17,12 +17,30 @@ ion-icon{
 header.main{
   background-color: rgb(27, 27, 27);
   color:white;
-  padding: 1em 3em;
+  padding: 0.5em 3em;
   box-shadow: 0 1em 1em -0.5em rgb(0,0,0,0.4);
   margin-bottom:1em;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  >h1{
+    width:100%;
+    font-size: 1.5em;
+  }
+  >nav{
+    display: flex;
+    width:20%;
+    align-items: center;
+    justify-content: space-between;
+    >button{
+      border:0;
+      background-color: transparent;
+      color:white;
+      cursor: pointer;
+      padding:0;
+      margin:0;
+    }
+  }
 }
 section.content{
   display: flex;
