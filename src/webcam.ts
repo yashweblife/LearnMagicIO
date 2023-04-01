@@ -43,7 +43,7 @@ function animate() {
     test.forEach((val: Vector) => {
       average.add(val);
     });
-    let radius = 10//(test.length * 100) / camera.canvas.size.x;
+    let radius = 10; //(test.length * 100) / camera.canvas.size.x;
     average.div(test.length);
     camera.canvas.start();
     camera.canvas.arc(average, radius);
@@ -85,7 +85,7 @@ function animate() {
   camera.canvas.rect(rectange.pos, rectange.size);
   if (rectange.intersect) {
     camera.canvas.fill("red");
-    outputDOM.innerHTML="This is working"
+    outputDOM.innerHTML = "This is working";
   } else {
     camera.canvas.stroke("red");
   }
@@ -94,8 +94,8 @@ function animate() {
   camera.canvas.rect(rectange1.pos, rectange1.size);
   if (rectange1.intersect) {
     camera.canvas.fill("red");
-    outputDOM.innerHTML="Hello World"
-} else {
+    outputDOM.innerHTML = "Hello World";
+  } else {
     camera.canvas.stroke("red");
   }
   camera.canvas.end();
