@@ -118,14 +118,14 @@ export class Vector {
   public clone = () => {
     return new Vector(this.x, this.y, this.z);
   };
-  public normalize = (val:number=1) => {
+  public normalize = (val: number = 1) => {
     const m = Math.sqrt(this.x ** 2 + this.y ** 2 + this.z ** 2);
     this.mul(val / m);
   };
 }
 
-export function lerp(a:number,b:number,c:number){
-  return a+(b-a)*c
+export function lerp(a: number, b: number, c: number) {
+  return a + (b - a) * c;
 }
 /*
 export function vectorAdd(a:Vector, b:Vector):Vector{}
@@ -142,5 +142,3 @@ export function vecToMatrix(a:Vector){}
 export function largestVector(a:Vector[]){}
 export function smallestVector(a:Vector[]){}
 */
-
-

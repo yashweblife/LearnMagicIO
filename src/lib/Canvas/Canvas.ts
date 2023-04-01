@@ -54,11 +54,31 @@ export class Canvas {
     this.dom.height = this.size.y;
     this.bound = this.dom.getBoundingClientRect();
   }
+  public recaliberate() {
+    this.bound = this.dom.getBoundingClientRect();
+  }
   public start() {
     this.c.beginPath();
   }
   public end() {
     this.c.closePath();
+  }
+  public addGridLines(x: number = 10, y: number = 10) {
+    this.c.strokeStyle = "rgba(0,0,0,0.1)";
+    for (let i = 0; i < this.size.x; i += x) {
+      this.c.beginPath();
+      this.c.moveTo(i, 0);
+      this.c.lineTo(i, this.size.x);
+      this.c.stroke();
+      this.c.closePath();
+    }
+    for (let i = 0; i <= this.size.y; i += y) {
+      this.c.beginPath();
+      this.c.moveTo(0, i);
+      this.c.lineTo(this.size.y, i);
+      this.c.stroke();
+      this.c.closePath();
+    }
   }
   public arc(pos: Vector, radius: number) {
     this.c.arc(pos.x, pos.y, radius, 0, Math.PI * 2);
@@ -98,9 +118,9 @@ export class Canvas {
     this.c.fillText(val, pos.x + offsetX, pos.y + offsetY);
   }
   public drawImage(img: HTMLImageElement | HTMLVideoElement) {
-    this.c.drawImage(img,0,0, this.size.x, this.size.y);
+    this.c.drawImage(img, 0, 0, this.size.x, this.size.y);
   }
-  public getImageData(){
-    return(this.c.getImageData(0,0,this.size.x, this.size.y))
+  public getImageData() {
+    return this.c.getImageData(0, 0, this.size.x, this.size.y);
   }
 }

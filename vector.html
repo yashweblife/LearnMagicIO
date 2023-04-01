@@ -15,13 +15,86 @@
     <title>LMIO | Vectors</title>
   </head>
   <body>
-    <header>
-      <h1></h1>
+    <header class="main">
+      <h1>LearnMaginIO | Vectors</h1>
       <nav>
-        <div id="search-bar">
-        </div>
+        <a href="./index.html">
+          <ion-icon name="home"></ion-icon>
+        </a>
       </nav>
     </header>
+    <section class="content">
+      <div class="side-nav"></div>
+      <main class="article">
+        <header>
+          <h2>What are Vectors?</h2>
+          <p title="!">They are something you just need to know</p>
+        </header>
+        <section>
+          <h4>The Physics Point Of View</h4>
+          <p>
+            When we take a look at physics, we find that <b>Vectors</b> are
+            present everywhere. Displacement, Velocity, Acceleration are the
+            very basic depiction of <b>Vectors</b>. Lets take a look at what
+            they are refering to.
+          </p>
+          <h3>Foundation:</h3>
+          <p>
+            The premise of a Vector is that its a collection of number that can
+            be plotted on a graph. Though thats not the best way to explain a
+            vector, its more consice to establish an understanding. Upon
+            breaking a vector down you get what are called
+            <b title="Parts that comprise a vector">Components.</b> These
+            components are values on a <b>Cartesian Axis</b>. So the ideal 2D
+            plain contains an x value and a y value. A point that is contained
+            within this plain is represented by : <b>&lt;x y&gt;</b>. Where
+            <b>x and y</b> can be all sorts of numbers. A 3D space will be
+            represented like this: &lt;x y z&gt;, and a 4D space will be
+            represented like this: &lt;x y z w&gt;. Honestly you can use what
+            ever name for the axis you want. These values are the components.
+            Lets take a look at Vectors on an
+            <a href="./canvas.html"
+              ><b title="Check That Out Here">HTML Canvas</b></a
+            >.
+          </p>
+          <div class="canvas-container">
+            <div class="canvas-card">
+              <div class="header">
+                <h4>Coordinate based Vectors</h4>
+                <p>Hover over the canvas</p>
+              </div>
+              <div class="content" id="vector-demo"></div>
+            </div>
+            <div class="canvas-card">
+              <div class="header">
+                <h4>Vector Distance Demo</h4>
+                <p>Hover over the canvas</p>
+              </div>
+              <div class="content" id="vector-distance-demo"></div>
+            </div>
+          </div>
+          <h3>Lets Look At Code</h3>
+          <p>A Basic Javascript Setup</p>
+          <pre style="padding:0;">
+            <code style="border-radius: 0.5em;" class="language-javascript">
+              class Vector{
+                x = 0;
+                y = 0;
+                constructor(x=0,y=0){
+                  this.x = x;
+                  this.y = 0;
+                }
+              }
+              const v1 = new Vector(10,10);
+            </code>
+          </pre>
+          <code id="code">
+
+          </code>
+        </section>
+      </main>
+    </section>
+    <footer></footer>
     <script src="./src/vector.ts" type="module"></script>
   </body>
 </html>
