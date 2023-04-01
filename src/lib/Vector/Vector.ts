@@ -127,6 +127,7 @@ export class Vector {
 export function lerp(a:number,b:number,c:number){
   return a+(b-a)*c
 }
+/*
 export function vectorAdd(a:Vector, b:Vector):Vector{}
 export function vectorAddArray(a:Vector[]):Vector{}
 export function vectorSubtract(a:Vector, b:Vector):Vector{}
@@ -140,6 +141,6 @@ export function vectorLerp(a:Vector,b:Vector,c:number):Vector{}
 export function vecToMatrix(a:Vector){}
 export function largestVector(a:Vector[]){}
 export function smallestVector(a:Vector[]){}
-
+*/
 
 
