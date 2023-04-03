@@ -66,11 +66,47 @@ public draw(): void {
 }
 
 public update(): void {
-  if((this.x + this.size) >= this.canvas.getWidth()) {
+    if((this.x + this.size) >= this.canvas.getWidth()) {
+        this.velX = -(this.velX);
+    }
+
+    if((this.x - this.size) <= 0) {
       this.velX = -(this.velX);
+    }
+
+    if((this.y + this.size) >= this.canvas.getHeight()) {
+      this.velY = -(this.velY);
+    }
+
+    if((this.y - this.size) <= 0) {
+      this.velY = -(this.velY);
+    }
+
+    this.x += this.velX;
+    this.y += this.velY;
   }
 
 }
 
+class Loop {
+  protected canvas: Canvas;
+  protected ballGenerator: BallGenerator;
 
+  constructor(canvas: Canvas, ballGenerator: BallGenerator) {
+      this.canvas = canvas;
+      this.ballGenerator = ballGenerator;
+  }
+
+  public start(): void {
+      this.canvas.getContext().fillStyle = 'rgba(255,255,255,0.7)';
+      this.canvas.getContext().fillRect(0,0, this.canvas.getWidth(), this.canvas.getHeight());
+
+      for(let ball of this.ballGenerator.getAll()) {
+          ball.draw();
+          ball.update();
+      }
+
+      requestAnimationFrame(this.start.bind(this));
+  }
 }
+
