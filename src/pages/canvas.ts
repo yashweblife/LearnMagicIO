@@ -1,7 +1,7 @@
-import { Canvas } from "./lib/Canvas/Canvas";
-import { Vector } from "./lib/Vector/Vector";
-import "./styles/canvas.scss";
-import "./styles/common.scss";
+import { Canvas } from "../lib/Canvas/Canvas";
+import { Vector } from "../lib/Vector/Vector";
+import "../styles/canvas.scss";
+import "../styles/common.scss";
 
 const canvasCoordinateSystemDemoDom = document.querySelector(
   "#canvas-coordinate-system-demo"

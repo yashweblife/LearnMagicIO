@@ -1,5 +1,5 @@
-import { Vector } from "./lib/Vector/Vector";
-import { Camera } from "./Projects/Camera";
+import { Vector } from "../lib/Vector/Vector";
+import { Camera } from "../Projects/Camera";
 
 const camera = new Camera();
 const image: Vector[][] = [];

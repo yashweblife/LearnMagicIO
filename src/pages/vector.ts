@@ -1,8 +1,8 @@
+import { Canvas } from "../lib/Canvas/Canvas";
+import { Vector } from "../lib/Vector/Vector";
+import "../styles/article.scss";
+import "../styles/common.scss";
 import "./article";
-import { Canvas } from "./lib/Canvas/Canvas";
-import { Vector } from "./lib/Vector/Vector";
-import "./styles/article.scss";
-import "./styles/common.scss";
 
 const mouse = new Vector();
 /**
