@@ -16,9 +16,15 @@ main.article {
     p[title="!"] {
       color: red;
     }
+    p[title="-"]{
+      color:rgb(119, 126, 255);
+    }
   }
   p {
     max-width: 80ch;
+    a{
+      color:rgb(80, 86, 210);
+    }
     b[title] {
       cursor: help;
     }
