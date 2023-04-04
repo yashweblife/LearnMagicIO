@@ -16,7 +16,7 @@
   </head>
   <body>
     <header class="main">
-      <h1>LearnMaginIO | Vectors</h1>
+      <h1>LearnMagicIO | Vectors</h1>
       <nav>
         <a href="./index.html">
           <ion-icon name="home"></ion-icon>
@@ -36,13 +36,13 @@
             When we take a look at physics, we find that <b>Vectors</b> are
             present everywhere. Displacement, Velocity, Acceleration are the
             very basic depiction of <b>Vectors</b>. Lets take a look at what
-            they are refering to.
+            they are referring to.
           </p>
           <h3>Foundation:</h3>
           <p>
             The premise of a Vector is that its a collection of number that can
             be plotted on a graph. Though thats not the best way to explain a
-            vector, its more consice to establish an understanding. Upon
+            vector, its more concise to establish an understanding. Upon
             breaking a vector down you get what are called
             <b title="Parts that comprise a vector">Components.</b> These
             components are values on a <b>Cartesian Axis</b>. So the ideal 2D
@@ -75,7 +75,7 @@
           </div>
           <h3>Lets Look At Code</h3>
           <p>A Basic Javascript Setup</p>
-          <pre style="padding:0;">
+          <pre style="padding: 0">
             <code style="border-radius: 0.5em;" class="language-javascript">
               class Vector{
                 x = 0;
@@ -88,13 +88,124 @@
               const v1 = new Vector(10,10);
             </code>
           </pre>
-          <code id="code">
-
-          </code>
+          <p>
+            There are many ways to make a vector implementation but using
+            classes is pretty easy to understand. For now we will be looking at
+            2D vectors.
+            <br />            
+            You can find the code for this over at github:
+            <br>
+            <div style="display:flex;align-items: center;">
+              Click This:
+              <a
+                href="https://github.com/yashweblife/LearnMagicIO/blob/master/src/lib/Vector/Vector.ts"
+                ><ion-icon name="logo-github" style="font-size: 2em;box-shadow: 0 0 1em 0 rgba(0,0,0,0.2);border-radius: 50%;" title="This is the github link"></ion-icon
+              ></a>
+            </div>
+          </p>
+        </section>
+        <section>
+          <h3>Simple Arithmetics</h3>
+          <p>
+            Vectors are not too complicated when it comes to Arithmetics.
+            Lets take a look at addition 
+          </p>
+          <pre>
+            <code class="language-javascript">
+              /*
+                Assume that the add function is part of the above vector class.
+                It will take a vector as an argument and add it to the instance
+              */
+              add(vec){
+                this.x += vec.x;
+                this.y += vec.y;
+              }
+            </code>
+          </pre>
+          <p>
+            Subtraction also looks the same, but <b>Multiplication becomes a little more complex, so lets take a look at that</b>
+          </p>
+          <h3>Vector Multiplication</h3>
+          <p>
+            There are 3 different kinds of <b>Vector Multiplication</b>:
+            <table>
+              <tr>
+                <td>
+                  - Scalar
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  - Dot
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  - Cross
+                </td>
+              </tr>
+            </table>
+          </p>
+          <h3>Scalar</h3>
+          <p>This is a type of multiplication where you take a numerical input and multiply it to the vectors components, this generally leads to linear scaling of the vectors components</p>
+          <pre><code class="language-javascript">
+            scalar(num){
+              this.x *= num;
+              this.y *= num;
+            }
+          </code></pre>
+          <h3>Dot</h3>
+          <p>A dot product is going to be more difficult to understand. Its a type of multiplication which results in a scalar output, Lets take a look at what to code looks like</p>
+          <pre><code class="language-javascript">
+            dot(vec){
+              return(
+                (this.x * vec.x) + (this.y * vec.y)
+              );
+            }
+          </code></pre>
+          <p>
+            This product is a very significant concept in linear algebra and physics. In a general case we would want to do a dot product between 2 normalized vectors. To understand what this does, lets take a look at an example.            
+          </p>
+          <p>When 2 vectors are perpendicular</p>
+          <pre><code class="language-javascript">
+            const v1 = new Vector(1, 0);
+            const v2 = new Vector(0, 1);
+            console.log(v1.dot(v2));  // This will result as 0
+          </code></pre>
+          <p>When 2 vectors are parallel</p>
+          <pre><code class="language-javascript">
+            const v1 = new Vector(1, 0);
+            const v2 = new Vector(1, 0);
+            console.log(v1.dot(v2));  // This will result as 1
+          </code></pre>
+          <p>When 2 vectors are in opposite direction</p>
+          <pre><code class="language-javascript">
+            const v1 = new Vector(1, 0);
+            const v2 = new Vector(-1, 0);
+            console.log(v1.dot(v2));  // This will result as -1
+          </code></pre>
+          <p>
+            So what is going on here?
+            <br>
+            In the first case:
+            <br>
+            The acos of 0 is 1.5707963267948966 which translates from radians to about 90 degrees.
+            <br>
+            In te same way when you take a look at the second case.
+            <br>
+            The acos of 1 is 0 degrees, and in the third case the acos of -1 is 180 degrees.
+            <br>
+            So the number being spit out from dot products can be used to get angles between 2 vectors.
+            The correct way of saying this would be, <b>A dot products gives us how much a vector gets influenced by another vector.</b>
+            <br>
+            In a tug of war with teams of 5 people, the influence of your teammate on you will be 1, the influence of your opponent on you will be -1 individually and -5 cumulatively.
+            If there was a weight attached to the center, it would not really influence this dynamic.
+            When you take a dot product, you can get a quantity that depicts influence.
+          </p>
         </section>
       </main>
     </section>
     <footer></footer>
-    <script src="./src/vector.ts" type="module"></script>
+    <script src="./src/pages/vector.ts" type="module"></script>
   </body>
 </html>

@@ -1,29 +1,8 @@
-import { Converter } from "showdown";
+import { Canvas } from "../lib/Canvas/Canvas";
+import { Vector } from "../lib/Vector/Vector";
+import "../styles/article.scss";
+import "../styles/common.scss";
 import "./article";
-import { Canvas } from "./lib/Canvas/Canvas";
-import { Vector } from "./lib/Vector/Vector";
-import "./styles/article.scss";
-import "./styles/common.scss";
-
-const converter = new Converter();
-converter.setOption("ghCodeBlocks", true);
-converter.setFlavor("github");
-console.log(converter.getOptions());
-const code = document.querySelector("#code")!;
-let test = [
-  "```javascript",
-  "class Vector{",
-  "  x=0;",
-  "  y=0;",
-  "  constructor(x=0,y=0){",
-  "    this.x=0;",
-  "    this.y=0;",
-  "  }",
-  "}",
-  "```",
-].join("\n");
-
-code.innerHTML = converter.makeHtml(test);
 
 const mouse = new Vector();
 /**

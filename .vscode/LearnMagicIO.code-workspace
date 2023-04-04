@@ -5,6 +5,10 @@
 		}
 	],
 	"settings": {
-		"todo-tree.tree.showBadges": true
+		"todo-tree.tree.showBadges": true,
+		"cSpell.words": [
+			"Boids",
+			"LMIO"
+		]
 	}
 }
