@@ -117,6 +117,29 @@ main{
   }
 }
 
+footer{
+  width: 100%;    
+  margin:3em;
+  h3{
+    text-align: center;
+    margin:3em;
+  }
+  div{
+    width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    table{  
+      width:50%;
+      >tr{
+        td{
+          text-align: center ;
+        }
+      }
+    }
+  }
+}
+
 @container header-main{
 
 }
