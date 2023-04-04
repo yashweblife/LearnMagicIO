@@ -9,8 +9,8 @@ export class Camera {
     navigator.mediaDevices
       .getUserMedia({
         video: {
-            width:300,
-            height:300
+          width: 300,
+          height: 300,
         },
         audio: false,
       })
@@ -22,7 +22,7 @@ export class Camera {
   public drawImage() {
     this.canvas.drawImage(this.video);
   }
-  public getImageData(){
-    return(this.canvas.getImageData())
+  public getImageData() {
+    return this.canvas.getImageData();
   }
 }
