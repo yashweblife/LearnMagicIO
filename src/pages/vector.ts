@@ -104,5 +104,99 @@ function VectorDemo2() {
   }
   demoAnimation();
 }
+/**
+ * Addition Subtraction Multiplication
+ */
+function VectorDemo3() {
+  const canvasContainer = document.querySelector("#vector-arithmetics-demo")! as HTMLElement;
+  const canvas = new Canvas({
+    parent: canvasContainer,
+    size: new Vector(200, 200),
+  });
+  let tab = 0;
+  const b1:HTMLButtonElement = document.querySelector("#vector-arithmetics-add")!;
+  const b2:HTMLButtonElement = document.querySelector("#vector-arithmetics-dot")!;
+  const b3:HTMLButtonElement = document.querySelector("#vector-arithmetics-cross")!;
+  b1?.addEventListener("click",()=>{
+    b1.style.backgroundColor="red"
+    b2.style.backgroundColor="white"
+    b3.style.backgroundColor="white"
+    addition();
+  })
+  b2?.addEventListener("click",()=>{
+    b1.style.backgroundColor="white"
+    b2.style.backgroundColor="red"
+    b3.style.backgroundColor="white"
+    dotProduct();
+  })
+  b3?.addEventListener("click",()=>{
+    b1.style.backgroundColor="white"
+    b2.style.backgroundColor="white"
+    b3.style.backgroundColor="red"
+  })
+  canvas.setOrigin(canvas.size.x/2,canvas.size.y/2)
+  function addition(){
+    const v = new Vector(0,40);
+    const v1 = new Vector(40,0);
+    const v2 = Vector.getAdd(v,v1);
+    function animate(){
+      canvas.clearAll();
+      canvas.addGridLines(20,20)
+      canvas.start();
+      canvas.arc(v, 3);
+      canvas.fill()
+      canvas.end();
+      canvas.start();
+      canvas.arc(v1, 3);
+      canvas.fill()
+      canvas.end();
+      canvas.start();
+      canvas.arc(v2, 4);
+      canvas.fill("rgb(255,0,0)")
+      canvas.end();
+      canvas.start();
+      canvas.line(v1,v2)
+      canvas.stroke("rgb(0,255,255)");
+      canvas.end();
+      canvas.start();
+      canvas.line(v,v2)
+      canvas.stroke("rgb(0,255,255)");
+      canvas.end();
+      // requestAnimationFrame(animate)
+    }
+    animate();
+  }
+  function dotProduct(){
+    const base = new Vector(50, 0);
+    const test = new Vector(50,50);
+    const origin = new Vector();
+    const outcome = new Vector(0,0);
+    function animate(){
+      canvas.clearAll();
+      canvas.addGridLines();
+
+      canvas.start();
+      canvas.line(origin, base);
+      canvas.stroke("rgba(255,0,0,0.5)");
+      canvas.end();
+
+      canvas.start();
+      canvas.line(origin, test);
+      canvas.stroke("rgba(0,255,0,0.5)");
+      canvas.end();
+
+      outcome.x = test.dot(base);
+      outcome.y = test.dot(base);
+
+      canvas.start();
+      canvas.line(origin, outcome);
+      canvas.stroke("rgba(0,0,255,0.5)");
+      canvas.end();
+    }
+    animate();
+  }
+  dotProduct();
+}
 VectorDemo1();
 VectorDemo2();
+VectorDemo3()
