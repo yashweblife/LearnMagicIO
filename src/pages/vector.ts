@@ -19,11 +19,11 @@ function VectorDemo1() {
     mouse.x = e.clientX - vectorDemo.bound.left;
     mouse.y = e.clientY - vectorDemo.bound.top;
   });
-  vectorDemo.dom.addEventListener("mouseenter", (e: MouseEvent) => {
+  vectorDemo.dom.addEventListener("mouseenter", () => {
     activate = true;
     vectorDemoAnimation();
   });
-  vectorDemo.dom.addEventListener("mouseleave", (e: MouseEvent) => {
+  vectorDemo.dom.addEventListener("mouseleave", () => {
     activate = false;
   });
   window.addEventListener("scroll", () => {
@@ -54,11 +54,11 @@ function VectorDemo2() {
     mouse.y = e.clientY - canvas.bound.top;
   });
   let activate = false;
-  canvas.dom.addEventListener("mouseenter", (e: MouseEvent) => {
+  canvas.dom.addEventListener("mouseenter", () => {
     activate = true;
     demoAnimation();
   });
-  canvas.dom.addEventListener("mouseleave", (e: MouseEvent) => {
+  canvas.dom.addEventListener("mouseleave", () => {
     activate = false;
   });
   window.addEventListener("scroll", () => {
