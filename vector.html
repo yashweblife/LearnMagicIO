@@ -24,20 +24,32 @@
       </nav>
     </header>
     <section class="content">
-      <div class="side-nav"></div>
+      <div class="side-nav">
+        <h3>Content</h3>
+        <nav style="margin-left:1em;">
+          <a href="#header-1">Physics Point Of View</a>
+          <a href="#header-2">Foundation</a>
+          <a href="#header-3">Basic Code</a>
+          <a href="#header-4">Simple Arithmetics</a>
+          <a href="#header-5">Vector Multiplication</a>
+          <a href="#header-6">Scalar</a>
+          <a href="#header-7">Dot Product</a>
+          <a href="#header-8">Cross Product</a>
+        </nav>
+      </div>
       <main class="article">
         <header>
           <h2>What are Vectors?</h2>
         </header>
         <section>
-          <h4>The Physics Point Of View</h4>
+          <h4 id="header-1">The Physics Point Of View</h4>
           <p>
             When we take a look at physics, we find that <b>Vectors</b> are
             present everywhere. Displacement, Velocity, Acceleration are the
             very basic depiction of <b>Vectors</b>. Lets take a look at what
             they are referring to.
           </p>
-          <h3>Foundation:</h3>
+          <h3 id="header-2">Foundation:</h3>
           <p>
             The premise of a Vector is that its a collection of number that can
             be plotted on a graph. Though thats not the best way to explain a
@@ -72,7 +84,7 @@
               <div class="content" id="vector-distance-demo"></div>
             </div>
           </div>
-          <h3>Lets Look At Code</h3>
+          <h3 id="header-3">Lets Look At Code</h3>
           <p>A Basic Javascript Setup</p>
           <pre style="padding: 0">
             <code style="border-radius: 0.5em;" class="language-javascript">
@@ -104,7 +116,7 @@
           </p>
         </section>
         <section>
-          <h3>Simple Arithmetics</h3>
+          <h3 id="header-4">Simple Arithmetics</h3>
           <p>
             Vectors are not too complicated when it comes to Arithmetics.
             Lets take a look at addition 
@@ -124,7 +136,7 @@
           <p>
             Subtraction also looks the same, but <b>Multiplication becomes a little more complex, so lets take a look at that</b>
           </p>
-          <h3>Vector Multiplication</h3>
+          <h3 id="header-5">Vector Multiplication</h3>
           <p>
             There are 3 different kinds of <b>Vector Multiplication</b>:
             <table>
@@ -145,7 +157,7 @@
               </tr>
             </table>
           </p>
-          <h3>Scalar</h3>
+          <h3 id="header-6">Scalar</h3>
           <p>This is a type of multiplication where you take a numerical input and multiply it to the vectors components, this generally leads to linear scaling of the vectors components</p>
           <pre><code class="language-javascript">
             scalar(num){
@@ -153,7 +165,7 @@
               this.y *= num;
             }
           </code></pre>
-          <h3>Dot</h3>
+          <h3 id="header-7">Dot</h3>
           <p>A dot product is going to be more difficult to understand. Its a type of multiplication which results in a scalar output, Lets take a look at what to code looks like</p>
           <pre><code class="language-javascript">
             dot(vec){
