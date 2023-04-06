@@ -130,6 +130,9 @@ export class Vector {
       )
     )
   }
+  public static getRandom(mag:number=1){
+    return new Vector(Math.random()*mag, Math.random()*mag);
+  }
 }
 
 export function lerp(a: number, b: number, c: number) {
