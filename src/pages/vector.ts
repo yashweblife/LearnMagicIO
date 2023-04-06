@@ -27,7 +27,7 @@ function VectorDemo1() {
     activate = false;
   });
   window.addEventListener("scroll", () => {
-    vectorDemo.recaliberate();
+    vectorDemo.recalibrate();
   });
   function vectorDemoAnimation() {
     if (!activate) return;
@@ -62,7 +62,7 @@ function VectorDemo2() {
     activate = false;
   });
   window.addEventListener("scroll", () => {
-    canvas.recaliberate();
+    canvas.recalibrate();
   });
   const p1 = new Vector(10, 10);
   const p2 = new Vector(190, 190);

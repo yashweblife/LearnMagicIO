@@ -55,7 +55,7 @@ export class Canvas {
     this.dom.height = this.size.y;
     this.bound = this.dom.getBoundingClientRect();
   }
-  public recaliberate() {
+  public recalibrate() {
     this.bound = this.dom.getBoundingClientRect();
   }
   public start() {
