@@ -113,7 +113,7 @@ function VectorDemo3() {
     parent: canvasContainer,
     size: new Vector(200, 200),
   });
-  let tab = 0;
+  // let tab = 0;
   const b1:HTMLButtonElement = document.querySelector("#vector-arithmetics-add")!;
   const b2:HTMLButtonElement = document.querySelector("#vector-arithmetics-dot")!;
   const b3:HTMLButtonElement = document.querySelector("#vector-arithmetics-cross")!;
