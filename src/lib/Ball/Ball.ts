@@ -26,7 +26,17 @@ export class Ball {
   public setMass(val: number) {
     this.mass = val;
   }
-  public bound(x: number, y: number, w: number, h: number) {}
-  public draw(c: Canvas) {}
+  public bound(x: number, y: number, w: number, h: number) {
+    if (this.pos.x < x + this.size) this.pos.x = x + this.size;
+    if (this.pos.x > x + w - this.size) this.pos.x = x + w - this.size;
+    if (this.pos.y < y + this.size) this.pos.y < y + this.size;
+    if (this.pos.x > y + h - this.size) this.pos.x > y + h - this.size;
+  }
+  public draw(c: Canvas) {
+    c.start();
+    c.arc(this.pos, this.size);
+    c.fill(this.color);
+    c.end();
+  }
   public update() {}
 }
