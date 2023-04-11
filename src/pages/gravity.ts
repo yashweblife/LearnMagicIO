@@ -1,5 +1,5 @@
-import { Canvas } from "./lib/Canvas/Canvas";
-import { Vector } from "./lib/Vector/Vector";
+import { Canvas } from "../lib/Canvas/Canvas";
+import { Vector } from "../lib/Vector/Vector";
 
 class Ball {
   public pos: Vector = new Vector();
