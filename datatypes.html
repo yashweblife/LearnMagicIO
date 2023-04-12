@@ -4,9 +4,114 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <script
+    type="module"
+    src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+  ></script>
+  <script
+    nomodule
+    src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+  ></script>
+    <title>LMIO | Datatypes</title>
 </head>
 <body>
-    
+    <header class="main">
+        <h1><a href="./index.html">LearnMagicIO</a> | Datatypes</h1>
+        <nav>
+          <a href="./index.html">
+            <ion-icon name="home"></ion-icon>
+          </a>
+        </nav>
+      </header>
+    <section class="content">
+        <div class="side-nav">
+            <h3>Content</h3>
+            <nav style="margin-left:1em;">
+              <a href="#header-1">Physics Point Of View</a>
+              <a href="#header-2">Foundation</a>
+              <a href="#header-3">Basic Code</a>
+              <a href="#header-4">Simple Arithmetics</a>
+              <a href="#header-5">Vector Multiplication</a>
+              <a href="#header-6">Scalar</a>
+              <a href="#header-7">Dot Product</a>
+              <a href="#header-8">Cross Product</a>
+            </nav>
+          </div>
+        <main class="article">
+            <header>
+                <h2>
+                    Datatypes Are Important (😮‍💨JS and Python)
+                </h2>
+            </header>
+            <section>
+                <p>
+                    Datatypes are these awesome thing that gets used by compilers to determine how much resource a program needs.
+                    They are very common in lower level languages like <b>C and C++</b>.
+                    These languages are also considered more efficient.
+                </p>
+                <h4>
+                    What are Datatypes
+                </h4>
+                <p>
+                    Think of a computer as a large chain of boxes,    
+                    <div id="illus1" style="margin:1em"></div>
+                    When you make an integer, it occupies a certain number of boxes
+                    <div id="illus2" style="margin:1em"></div>
+                    Similarly, a string will occupy even more boxes
+                    <div id="illus3" style="margin:1em"></div>
+                    Say your code has 1 integer and 1 string, the memory of your computer would look like this:
+                    <div id="illus4" style="margin:1em"></div>
+                    You have a limit on how many boxes you can fill which depends on your computer.
+                    Properly written programs will make use of this space very efficiently. 
+                    <br>
+                    There are 2 major types of data
+                    <h4>Primary and Secondary</h4>                 
+                </p>
+                <h3>Primary</h3>
+                <p>
+                    This kind of datatype ususally refers to homogenius units of data, like number, characters and booleans.
+                    A number can not be broken down into something else but a string can be broken down into characters,
+                    <br>
+                    <b>Some Examples:</b>
+                    <ul>
+                        <li>
+                            Integer
+                        </li>
+                        <li>
+                            Characters
+                        </li>
+                        <li>
+                            Booleans
+                        </li>
+                        <li>
+                            Floats
+                        </li>
+                        <li>
+                            Double
+                        </li>
+                    </ul>
+                </p>
+                <h3>Secondary Datatypes</h3>
+                <p>
+                    This kind of datatypes are more complex in what they can be, you can even "make your own".
+                    They are in some way a collection of the primary datatypes. A string is a collection of characters and an array is a collection of stuff.
+                    <br>
+                    <b>Some Examples</b>
+                    <ul>
+                        <li>
+                            Strings
+                        </li>
+                        <li>
+                            Arrays
+                        </li>
+                        <li>
+                            "Classes/Objects"
+                        </li>
+                    </ul>
+                </p>
+            </section>
+        </main>
+    </section>
+    <script src="./src/pages/datatypes.ts" type="module"></script>
 </body>
 </html>
