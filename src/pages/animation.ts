@@ -174,38 +174,59 @@ function demo3() {
       new Line(new Vector(1, -1, -1), new Vector(1, -1, 1)),
     ]),
   ];
-  cube.forEach((face:Face)=>{
-	face.setCenter(c.size.x/2,c.size.y/2,0);
-	face.setScale(50);
-	face.setAngle(1,1,0);
-	face.setColor(new Color(255,0,0,1))
-  })
-  let ax=0;
+  cube.forEach((face: Face) => {
+    face.setCenter(c.size.x / 2, c.size.y / 2, 0);
+    face.setScale(50);
+    face.setAngle(1, 1, 0);
+    face.setColor(new Color(255, 0, 0, 1));
+  });
+  let ax = 0;
   let s = 10;
-  let ds=0.1;
+  let ds = 0.1;
   function update() {
     c.clearAll();
     c.addGridLines();
-	cube.sort((face:Face, face1:Face)=>face1.getMaxZ()-face.getMaxZ());
-	ax+=0.01;
-	if(s>50){
-		s=50
-		ds=-ds;
-	}
-	if(s<10){
-		s=10
-		ds=-ds;
-	}
-	s+=ds
-	cube.forEach((face:Face)=>{
-		face.setAngle(ax,45*(Math.PI/180),0)
-		face.setScale(s)
-		face.drawLines(c);
-		face.drawFace(c);
-	})
+    cube.sort((face: Face, face1: Face) => face1.getMaxZ() - face.getMaxZ());
+    ax += 0.01;
+    if (s > 50) {
+      s = 50;
+      ds = -ds;
+    }
+    if (s < 10) {
+      s = 10;
+      ds = -ds;
+    }
+    s += ds;
+    cube.forEach((face: Face) => {
+      face.setAngle(ax, 45 * (Math.PI / 180), 0);
+      face.setScale(s);
+      face.drawLines(c);
+      face.drawFace(c);
+    });
     requestAnimationFrame(update);
   }
 
   update();
 }
-demo1();
+demo3();
+const b1 = document.querySelector("#demo1-1") as HTMLButtonElement;
+const b2 = document.querySelector("#demo1-2") as HTMLButtonElement;
+const b3 = document.querySelector("#demo1-3") as HTMLButtonElement;
+b1.addEventListener("click", () => {
+  b1.classList.add("selected");
+  b2.classList.remove("selected");
+  b3.classList.remove("selected");
+  demo1();
+});
+b2.addEventListener("click", () => {
+  b2.classList.add("selected");
+  b1.classList.remove("selected");
+  b3.classList.remove("selected");
+  demo2();
+});
+b3.addEventListener("click", () => {
+  b3.classList.add("selected");
+  b2.classList.remove("selected");
+  b1.classList.remove("selected");
+  demo3();
+});

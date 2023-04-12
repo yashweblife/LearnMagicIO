@@ -33,7 +33,18 @@
                 <h3>
                     Lets take a look at an example of an Interactive Animation.
                 </h3>
-                <div id="demo1"></div>
+                <div style="box-shadow: 0 0 1em  0 rgba(0,0,0,0.1);">
+                    <div class="header" style="background-color: rgb(42,42,42);display: flex;">
+                        <button id="demo1-1" class="selected" style="background-color:transparent;width:100%;padding:1em;color:white;border:0;outline:none;cursor:pointer">Blob Control</button>
+                        <button id="demo1-2" class="" style="background-color:transparent;width:100%;padding:1em;color:white;border:0;outline:none;cursor:pointer">Gravity</button>
+                        <button id="demo1-3" class="" style="background-color:transparent;width:100%;padding:1em;color:white;border:0;outline:none;cursor:pointer">3D <Cube></Cube></button>
+                    </div>
+                    <div class="content" style="display:grid;grid-template-columns: 1fr 1fr;">
+                        <div id="demo1"></div>
+                        <div class="info"></div>
+                    </div>
+
+                </div>
             </section>
         </main>
     </section>
