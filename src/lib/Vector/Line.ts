@@ -1,3 +1,4 @@
+import { Canvas } from "../Canvas/Canvas";
 import { Vector } from "./Vector";
 
 export class Line {
@@ -32,5 +33,11 @@ export class Line {
       }
     }
     return null;
+  }
+  public draw(c:Canvas){
+    c.start()
+    c.line(this.start,this.end);
+    c.stroke();
+    c.end()
   }
 }
