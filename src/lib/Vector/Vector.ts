@@ -122,16 +122,41 @@ export class Vector {
     const m = Math.sqrt(this.x ** 2 + this.y ** 2 + this.z ** 2);
     this.mul(val / m);
   };
-  public static getAdd(vec1:Vector,vec2:Vector){
-    return(
-      new Vector(
-        vec1.x+vec2.x,
-        vec1.y+vec2.y
-      )
+  public Add(vec1: Vector) {
+    return new Vector(this.x + vec1.x, this.y + vec1.y, this.z + vec1.z);
+  }
+  public RotateX(angle: number) {
+    return new Vector(
+      this.x,
+      this.y * Math.cos(angle) - this.z * Math.sin(angle),
+      this.y * Math.sin(angle) + this.z * Math.cos(angle)
+    );
+  }
+  public RotateY(angle:number){
+    return new Vector(
+      this.x * Math.cos(angle) + this.z * Math.sin(angle),
+      this.y,
+      -this.x * Math.sin(angle) + this.z * Math.cos(angle)
     )
   }
-  public static getRandom(mag:number=1){
-    return new Vector(Math.random()*mag, Math.random()*mag);
+  public RotateZ(angle:number){
+    return new Vector(
+      this.x * Math.cos(angle) - this.y * Math.sin(angle),
+      this.x * Math.sin(angle) + this.y * Math.cos(angle),
+      this.z
+    )
+  }
+  public static getAdd(vec1: Vector, vec2: Vector) {
+    return new Vector(vec1.x + vec2.x, vec1.y + vec2.y, vec1.z + vec2.z);
+  }
+  public static getSub(vec1: Vector, vec2: Vector) {
+    return new Vector(vec1.x - vec2.x, vec1.y - vec2.y, vec1.z - vec2.z);
+  }
+  public getScale(val: number) {
+    return new Vector(this.x * val, this.y * val, this.z * val);
+  }
+  public static getRandom(mag: number = 1) {
+    return new Vector(Math.random() * mag, Math.random() * mag);
   }
 }
 

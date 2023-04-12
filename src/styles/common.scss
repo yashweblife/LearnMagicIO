@@ -42,6 +42,9 @@ header.main{
     }
   }
 }
+button.selected{
+  background-color: rgb(106, 106, 255) !important;
+}
 section.content{
   display: flex;
   align-items: flex-start;
