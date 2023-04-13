@@ -1,14 +1,16 @@
-import "../styles/article.scss";
-import "../styles/common.scss";
-
+import "md-block";
 import { Ball } from "../lib/Ball/Ball";
 import { Canvas, Color } from "../lib/Canvas";
 import { Face } from "../lib/Vector/Face";
 import { Line } from "../lib/Vector/Line";
 import { Vector } from "../lib/Vector/Vector";
+import "../styles/article.scss";
+import "../styles/common.scss";
+import "./article";
 
 function demo1() {
   const dom = document.querySelector("#demo1")! as HTMLElement;
+  dom.innerHTML="";
   const c = new Canvas({ parent: dom, size: new Vector(300, 300) });
 
   c.enableMouseOver();
@@ -76,6 +78,7 @@ function demo1() {
 }
 function demo2() {
   const dom = document.querySelector("#demo1")! as HTMLElement;
+  dom.innerHTML="";
   const c = new Canvas({ parent: dom, size: new Vector(300, 300) });
 
   c.enableMouseOver();
@@ -131,6 +134,7 @@ function demo2() {
 
 function demo3() {
   const dom = document.querySelector("#demo1")! as HTMLElement;
+  dom.innerHTML="";
   const c = new Canvas({ parent: dom, size: new Vector(300, 300) });
 
   c.enableMouseOver();
