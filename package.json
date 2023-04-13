@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "highlight.js": "^11.7.0",
+    "md-block": "^0.0.1",
     "showdown": "^2.1.0"
   }
 }
