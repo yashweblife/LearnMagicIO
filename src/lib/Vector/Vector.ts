@@ -132,19 +132,19 @@ export class Vector {
       this.y * Math.sin(angle) + this.z * Math.cos(angle)
     );
   }
-  public RotateY(angle:number){
+  public RotateY(angle: number) {
     return new Vector(
       this.x * Math.cos(angle) + this.z * Math.sin(angle),
       this.y,
       -this.x * Math.sin(angle) + this.z * Math.cos(angle)
-    )
+    );
   }
-  public RotateZ(angle:number){
+  public RotateZ(angle: number) {
     return new Vector(
       this.x * Math.cos(angle) - this.y * Math.sin(angle),
       this.x * Math.sin(angle) + this.y * Math.cos(angle),
       this.z
-    )
+    );
   }
   public static getAdd(vec1: Vector, vec2: Vector) {
     return new Vector(vec1.x + vec2.x, vec1.y + vec2.y, vec1.z + vec2.z);
@@ -160,21 +160,45 @@ export class Vector {
   }
 }
 
-export function lerp(a: number, b: number, c: number) {
-  return a + (b - a) * c;
+export class VectorMath {
+  public static getVectorAdd(a: Vector, b: Vector) {
+    return new Vector(a.x + b.x, a.y + b.y, a.z + b.z);
+  }
+  public static getVectorSubtract(a: Vector, b: Vector) {
+    return new Vector(a.x - b.x, a.y - b.y, a.z - b.z);
+  }
+  public static getVectorMultiply(a: Vector, b: Vector) {
+    return new Vector(a.x * b.x, a.y * b.y, a.z * b.z);
+  }
+  public static getVectorMagnitude(a: Vector) {
+    return Math.sqrt(a.x ** 2 + a.y ** 2 + a.z ** 2);
+  }
+  public static getVectorDistance(a: Vector, b: Vector) {
+    return Math.sqrt((a.x - b.x) ** 2 + (a.y - b.x) ** 2 + (a.z - b.z) ** 2);
+  }
+  public static getVectorNormalize(a: Vector, b: number = 1) {
+    const mag = Math.sqrt(a.x ** 2 + a.y ** 2 + a.z ** 2);
+    return new Vector((a.x * b) / mag, (a.y * b) / mag, (a.z * b) / mag);
+  }
+  public static getVectorRotateX(a: Vector, b: number = 0) {
+    return new Vector(
+      a.x,
+      a.y * Math.cos(b) - a.z * Math.sin(b),
+      a.y * Math.sin(b) + a.z * Math.cos(b)
+    );
+  }
+  public static getVectorRotateY(a: Vector, b: number = 0) {
+    return new Vector(
+      a.x * Math.cos(b) + a.z * Math.sin(b),
+      a.y,
+      -a.x * Math.sin(b) + a.z * Math.cos(b)
+    );
+  }
+  public static getVectorRotateZ(a: Vector, b: number = 0) {
+    return new Vector(
+      a.x * Math.cos(b) - a.y * Math.sin(b),
+      a.x * Math.sin(b) + a.y * Math.cos(b),
+      a.z
+    );
+  }
 }
-/*
-export function vectorAdd(a:Vector, b:Vector):Vector{}
-export function vectorAddArray(a:Vector[]):Vector{}
-export function vectorSubtract(a:Vector, b:Vector):Vector{}
-export function vectorSubtractArray(a:Vector[]):Vector{}
-export function vectorMultiply(a:Vector, b:Vector):Vector{}
-export function vectorMultiplyArray(a:Vector[]):Vector{}
-export function vectorAverageArray(a:Vector[]):Vector{}
-export function vectorRandom(a:number=-1, b:number=1):Vector{}
-export function vectorRandomArray(a:number=-1, b:number=1):Vector[]{}
-export function vectorLerp(a:Vector,b:Vector,c:number):Vector{}
-export function vecToMatrix(a:Vector){}
-export function largestVector(a:Vector[]){}
-export function smallestVector(a:Vector[]){}
-*/
