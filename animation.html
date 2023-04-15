@@ -43,7 +43,6 @@
                         <div id="demo1"></div>
                         <div class="info"></div>
                     </div>
-
                 </div>
                 <h3>
                     The Basics
@@ -62,9 +61,113 @@
                 </p>
                 <md-block>
                     The while loop is a lot like an angry wild horse, you really should stay away from it unless you know you can control it.
-                    So instead Javascript offers a safe loop technology. It is called the `requestAnimationFunction`
-                    
+                    So instead Javascript offers a safe loop technology. It is called the requestAnimationFrame Functions
                 </md-block>
+                <h3>Usage</h3>
+                <pre><code class="language-javascript">
+                    function animation(){
+                        //animate stuff right here
+                        requestAnimationFrame();
+                    }
+                    animation();
+                </code></pre>
+                <p>
+                    Lets create a canvas we can use for animations
+                </p>
+                <pre><code class="language-javascript">
+                    const canvas = document.createElement('canvas');
+                    const ctx = canvas.getContext('2d')
+                </code></pre>
+                <p>
+                    Lets create a Ball class so that we can try out an animation
+                </p>
+                <pre>
+                    <code class="language-javascript">
+                    class Ball{
+                        pos={ x: 0, y: 0 }; // Position
+                        vel={ x: 0, y: 0 }; // Velocity
+                        acc={ x: 0, y: 0 }; // Acceleration
+                        size=10;
+                        color="red";
+                        constructor(){}
+                        draw(c){
+                            c.beginPath();
+                            c.fillStyle = this.color;
+                            c.arc(this.pos.x, this.pos.y, this.size, 0, Math.PI*2, false);
+                            c.fill();
+                            c.closePath();
+                        }
+                    }
+                    </code>
+                </pre>
+                <p>
+                    Now lets make a ball and print it onto the canvas
+                </p>
+                <pre><code class="language-javascript">
+                    const b = new Ball()
+                    b.draw(ctx);
+                </code></pre>
+                <p>
+                    You will get something like this
+                </p>
+                <div id="demo2"></div>
+                <p>
+                    Lets make it move forward as well, this is where we will use the animation function 
+                </p>
+                <pre><code class="language-javascript">
+                    function animation(){
+                        b.pos.x += 1;
+                        b.draw();
+                        requestAnimationFrame(animation);
+                    }
+                    animation()
+                </code></pre>
+                <div id="demo3"></div>
+                <p>What is going on here, we should be seeing a ball move from left to right but its forming a line, well the answer is pretty simple, its just smearing the paint of the ball.
+                    We are not doing much to tell the canvas to reset/clear of previous frames. So let do that</p>
+                <pre><code class="language-javascript">
+                    function animation(){
+                        ctx.clearRect(0,0,canvas.width,canvas.height);
+                        b.pos.x += 1;
+                        b.draw();
+                        requestAnimationFrame(animation);
+                    }
+                    animation()
+                </code></pre>
+                <div id="demo4"></div>
+                <p>
+                    Lets also add a slight behavior system to the Ball
+                </p>
+                <pre><code id="language-javascript">
+                    class Ball{
+                        pos={ x: 0, y: 0 }; 
+                        vel={ x: 1, y: 0 }; // Set the X Velocity to something
+                        acc={ x: 0, y: 0 }; 
+                        size=10;
+                        color="red";
+                        constructor(){}
+                        draw(c){
+                            c.beginPath();
+                            c.fillStyle = this.color;
+                            c.arc(this.pos.x, this.pos.y, this.size, 0, Math.PI*2, false);
+                            c.fill();
+                            c.closePath();
+                        }
+                        /**
+                        * Add the velocity to the position
+                        * Add a boundary check, we dont want the ball to escape the screen.
+                        update(c){  //Take the canvas as an input
+                            this.pos.x+=this.vel.x;
+                            this.pos.y+=this.vel.y;
+                            if(this.pos.x>c.width){
+                                this.vel.x = -this.vel.x
+                            }
+                            if(this.pos.x){
+                                this.vel.x = -this.vel.x
+                            }
+                        }
+                    }
+                </code></pre>
             </section>
         </main>
     </section>
