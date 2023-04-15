@@ -212,7 +212,7 @@ function demo3() {
 
   update();
 }
-demo3();
+demo1();
 const b1 = document.querySelector("#demo1-1") as HTMLButtonElement;
 const b2 = document.querySelector("#demo1-2") as HTMLButtonElement;
 const b3 = document.querySelector("#demo1-3") as HTMLButtonElement;
@@ -234,3 +234,55 @@ b3.addEventListener("click", () => {
   b1.classList.remove("selected");
   demo3();
 });
+
+function demo4(){
+  const dom = document.querySelector("#demo2")! as HTMLElement;
+  dom.innerHTML="";
+  const c = new Canvas({ parent: dom, size: new Vector(300, 300) });
+
+  c.enableMouseOver();
+  c.setDepth(300);
+
+  const b1 = new Ball(new Vector(c.size.x / 2, c.size.y / 2, 150));
+  b1.setSize(10);
+  b1.draw(c);
+}
+demo4();
+function demo5(){
+  const dom = document.querySelector("#demo3")! as HTMLElement;
+  dom.innerHTML="";
+  const c = new Canvas({ parent: dom, size: new Vector(300, 300) });
+
+  c.enableMouseOver();
+  c.setDepth(300);
+
+  const b1 = new Ball(new Vector(c.size.x / 2, c.size.y / 2, 150));
+  b1.setSize(10);
+  function update(){
+    b1.pos.x+=1;
+    b1.draw(c)
+    requestAnimationFrame(update)
+  }
+  update();
+}
+demo5();
+
+function demo6(){
+  const dom = document.querySelector("#demo4")! as HTMLElement;
+  dom.innerHTML="";
+  const c = new Canvas({ parent: dom, size: new Vector(300, 300) });
+
+  c.enableMouseOver();
+  c.setDepth(300);
+
+  const b1 = new Ball(new Vector(c.size.x / 2, c.size.y / 2, 150));
+  b1.setSize(10);
+  function update(){
+    c.clearAll();
+    b1.pos.x+=1;
+    b1.draw(c)
+    requestAnimationFrame(update)
+  }
+  update();
+}
+demo6();
