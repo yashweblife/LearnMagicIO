@@ -155,19 +155,33 @@
                         }
                         /**
                         * Add the velocity to the position
-                        * Add a boundary check, we dont want the ball to escape the screen.
+                        * Add a boundary check, we don't want the ball to escape the screen.
+                        */
                         update(c){  //Take the canvas as an input
                             this.pos.x+=this.vel.x;
                             this.pos.y+=this.vel.y;
                             if(this.pos.x>c.width){
                                 this.vel.x = -this.vel.x
                             }
-                            if(this.pos.x){
+                            if(this.pos.x &lt; 0){
                                 this.vel.x = -this.vel.x
                             }
                         }
                     }
+
                 </code></pre>
+                <div id="demo5"></div>
+            </section>
+            <section>
+                <h3>Checkout Some Cool Things We Can Do With Animations</h3>
+                <table>
+                    <tr>
+                        <td><a href="./gravity.html">Gravity</a></td>
+                        <td><a href="./infectionsim.html">Infection Simulator</a></td>
+                        <td><a href="geneticalgo.html">Genetic Algorithm</a></td>
+                        <td><a href="./videogame.html">Video Game</a></td>
+                    </tr>
+                </table>
             </section>
         </main>
     </section>
