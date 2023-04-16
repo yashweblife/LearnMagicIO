@@ -286,3 +286,30 @@ function demo6(){
   update();
 }
 demo6();
+
+function demo7(){
+  const dom = document.querySelector("#demo5")! as HTMLElement;
+  dom.innerHTML="";
+  const c = new Canvas({ parent: dom, size: new Vector(300, 300) });
+
+  c.enableMouseOver();
+  c.setDepth(300);
+
+  const b1 = new Ball(new Vector(c.size.x / 2, c.size.y / 2, 150));
+  b1.setSize(10);
+  b1.setVel(1,0);
+  function update(){
+    c.clearAll();
+    b1.pos.x+=b1.vel.x;
+    if(b1.pos.x>c.size.x){
+      b1.vel.x = -b1.vel.x;
+    }
+    if(b1.pos.x<0){
+      b1.vel.x = -b1.vel.x;
+    }
+    b1.draw(c)
+    requestAnimationFrame(update)
+  }
+  update();
+}
+demo7();
