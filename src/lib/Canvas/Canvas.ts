@@ -38,7 +38,7 @@ export class Canvas {
   public bound: DOMRect = this.dom.getBoundingClientRect();
   public origin: Vector = new Vector();
   public depth: number = 100;
-  public mouse:Vector = new Vector(0,0,0);
+  public mouse: Vector = new Vector(0, 0, 0);
   constructor(
     details: CanvasConstructor = {
       size: new Vector(500, 500),
@@ -51,16 +51,16 @@ export class Canvas {
     this.dom.height = this.size.y;
     this.bound = this.dom.getBoundingClientRect();
   }
-  public enableMouseOver(){
+  public enableMouseOver() {
     this.dom.addEventListener("mousemove", (e: MouseEvent) => {
       this.mouse.x = e.clientX - this.bound.left;
       this.mouse.y = e.clientY - this.bound.top;
     });
     this.dom.addEventListener("mouseenter", () => {
-      this.mouse.z=1;
+      this.mouse.z = 1;
     });
     this.dom.addEventListener("mouseleave", () => {
-      this.mouse.z=0;
+      this.mouse.z = 0;
     });
     window.addEventListener("scroll", () => {
       this.recalibrate();
@@ -113,7 +113,7 @@ export class Canvas {
     this.c.closePath();
   }
   public arc(pos: Vector, radius: number) {
-    this.c.arc(pos.x, pos.y, radius+(radius/this.depth), 0, Math.PI * 2);
+    this.c.arc(pos.x, pos.y, radius + radius / this.depth, 0, Math.PI * 2);
   }
   public rect(start: Vector, end: Vector) {
     this.c.rect(start.x, start.y, end.x, end.y);
@@ -126,10 +126,10 @@ export class Canvas {
     this.c.moveTo(start.x, start.y);
     this.c.lineTo(end.x, end.y);
   }
-  public moveTo(start:Vector){
+  public moveTo(start: Vector) {
     this.c.moveTo(start.x, start.y);
   }
-  public lineTo(start:Vector){
+  public lineTo(start: Vector) {
     this.c.lineTo(start.x, start.y);
   }
   public clear(from: Vector, to: Vector) {
@@ -161,6 +161,29 @@ export class Canvas {
   }
   public drawImage(img: HTMLImageElement | HTMLVideoElement) {
     this.c.drawImage(img, 0, 0, this.size.x, this.size.y);
+  }
+  public save(){
+    this.c.save();
+  }
+  public restore(){}
+  public drawSpecificImage(
+    img: HTMLImageElement | HTMLVideoElement,
+    sourcePos: Vector,
+    sourceSize: Vector,
+    pos: Vector,
+    size: Vector
+  ) {
+    this.c.drawImage(
+      img,
+      sourcePos.x,
+      sourcePos.y,
+      sourceSize.x,
+      sourceSize.y,
+      pos.x,
+      pos.y,
+      size.x,
+      size.y
+    );
   }
   public getImageData() {
     return this.c.getImageData(0, 0, this.size.x, this.size.y);
