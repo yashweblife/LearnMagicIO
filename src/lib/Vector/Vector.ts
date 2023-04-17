@@ -156,7 +156,7 @@ export class Vector {
     return new Vector(this.x * val, this.y * val, this.z * val);
   }
   public static getRandom(mag: number = 1) {
-    return new Vector(Math.random() * mag, Math.random() * mag);
+    return new Vector((Math.random()-0.5)*2 * mag, (Math.random()-0.5)*2 * mag);
   }
 }
 
@@ -200,5 +200,12 @@ export class VectorMath {
       a.x * Math.sin(b) + a.y * Math.cos(b),
       a.z
     );
+  }
+  public static getVectorRandomArray(size: number = 1, mag: number = 1) {
+    const output = [];
+    for (let i = 0; i < size; i++) {
+      output.push(Vector.getRandom(mag));
+    }
+    return output;
   }
 }
