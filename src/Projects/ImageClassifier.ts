@@ -1,6 +1,7 @@
 import { Canvas } from "../lib/Canvas";
 import { Matrix, MatrixMath } from "../lib/Matrix/Matrix";
-import { Vector, lerp } from "../lib/Vector/Vector";
+import { Vector } from "../lib/Vector/Vector";
+import { lerp } from "../lib/utils";
 
 class Network {
   public levels: Level[] = [];
