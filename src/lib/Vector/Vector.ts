@@ -122,6 +122,17 @@ export class Vector {
     const m = Math.sqrt(this.x ** 2 + this.y ** 2 + this.z ** 2);
     this.mul(val / m);
   };
+  public static getAdd(vec1:Vector,vec2:Vector){
+    return(
+      new Vector(
+        vec1.x+vec2.x,
+        vec1.y+vec2.y
+      )
+    )
+  }
+  public static getRandom(mag:number=1){
+    return new Vector(Math.random()*mag, Math.random()*mag);
+  }
 }
 
 export function lerp(a: number, b: number, c: number) {

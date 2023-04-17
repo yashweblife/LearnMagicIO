@@ -4,43 +4,65 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>LMIO | Gravity</title>
 
     <style>
-        body {
+        /* body {
             margin: 0;
             background-color: rgb(32, 32, 32);
-        }
-        .app {
+        } */
+        /* .app {
             width: 100vw;
             height: 100vh;
             display: flex;
             align-items: center;
             flex-direction: column;
-        }
+        } */
     </style>
 
 </head>
 <body>
-    <!-- <header>
-        <h1>Gravity in a particle</h1>
-    </header> -->
-
-   
+    <header class="main">
+        <h1><a href="./index.html">LearnMagicIO</a> | Gravity</h1>
+        <nav>
+          <a href="./index.html">
+            <ion-icon name="home"></ion-icon>
+          </a>
+        </nav>
+      </header>
 
     <section class="content1">
-        <main>
-            <div class="app">
-                <canvas id="my-canvas"></canvas>
-            </div>
-        </main>
+        <div class="app" id="app"> </div>
+        <main class="article">
+            <header>
+                <h2>What is Gravity?</h2>
+                <!-- <p title="!">They are something you just need to know</p> -->
+            </header>
+
+            <section>
+                <h4>The Physics Point Of View</h4>
+                <p>
+                    <b>Gravity</b> is a force of attraction that exists between any two masses, any two bodies, any two particles. 
+                    <b>Gravity</b> is not just the attraction between objects and the Earth. It is an attraction that exists 
+                    between all objects, everywhere in the universe.               
+                </p>
+                <h3>Foundation:</h3>
+                <p>
+                    Earth's gravity comes from all its mass. All its mass makes a combined gravitational pull on all 
+                    the mass in your body. That's what gives you weight. And if you were on a planet with less mass than 
+                    Earth, you would weigh less than you do here.
+                </p>
+            </section>
+        </main> 
+        
     </section>
 
     <footer>
 
     </footer>
 
-    <script src="src/gravity.ts" type="module"></script>
+    <script src="./src/pages/gravity.ts" type="module"></script>
 
 </body>
 </html>
