@@ -1,5 +1,5 @@
 import { Canvas } from "../lib/Canvas";
-import { Matrix } from "../lib/Matrix/Matrix";
+import { Matrix, MatrixMath } from "../lib/Matrix/Matrix";
 import { Vector } from "../lib/Vector/Vector";
 
 // function gatherData(name: string) {
@@ -69,46 +69,75 @@ const canvas = new Canvas({
   size: new Vector(300, 300),
 });
 const video = document.createElement("video");
-navigator.mediaDevices.getUserMedia({
-  video: {
-    width: 300,
-    height: 300,
-  },
-}).then((stream:MediaStream)=>{
-  video.srcObject=stream;
-  video.play();
-  animate();
-})
-const res = 10 ;
+navigator.mediaDevices
+  .getUserMedia({
+    video: {
+      width: 300,
+      height: 300,
+    },
+  })
+  .then((stream: MediaStream) => {
+    video.srcObject = stream;
+    video.play();
+    animate();
+  });
+const res = 10;
 const rModal = new Matrix(res);
 const gModal = new Matrix(res);
 const bModal = new Matrix(res);
 const bwModal = new Matrix(res);
-const imageMatrix = new Matrix(res)
-interface TrainingData{
-  name:string
-  red:Matrix[]
-  green:Matrix[]
-  blue:Matrix[]
-  bw:Matrix[]
+interface TrainingData {
+  name: string;
+  red: Matrix[];
+  green: Matrix[];
+  blue: Matrix[];
+  bw: Matrix[];
 }
-const trainingDataset:TrainingData[] = []
+const trainingDataset: TrainingData[] = [];
 const traningButton = document.querySelector("#train-me") as HTMLButtonElement;
 const className = document.querySelector("#class-name") as HTMLInputElement;
-const predictionDiv = document.querySelector("#prediction") as HTMLElement; 
-traningButton.addEventListener("click",()=>{
-  
-})
+const predictionDiv = document.querySelector("#prediction") as HTMLElement;
+traningButton.addEventListener("click", () => {
+  const { value } = className;
+});
+function gatherTrainingData(
+  name: string,
+  r: Matrix,
+  g: Matrix,
+  b: Matrix,
+  bw: Matrix
+) {
+  if (trainingDataset.length > 0) {
+    const test = trainingDataset.filter(
+      (data: TrainingData) => data.name == name
+    );
+    if (test.length == 1) {
+      test[0].red.push(MatrixMath.getMatrixClone(r));
+      test[0].green.push(MatrixMath.getMatrixClone(g));
+      test[0].blue.push(MatrixMath.getMatrixClone(b));
+      test[0].bw.push(MatrixMath.getMatrixClone(bw));
+    } else {
+      const output: TrainingData = {
+        name: name,
+        red: [MatrixMath.getMatrixClone(r)],
+        green: [MatrixMath.getMatrixClone(g)],
+        blue: [MatrixMath.getMatrixClone(b)],
+        bw: [MatrixMath.getMatrixClone(bw)],
+      };
+      trainingDataset.push(output);
+    }
+  }
+}
 function animate() {
   canvas.drawImage(video);
-  const {data} = canvas.getImageData();
+  const { data } = canvas.getImageData();
   let index = 0;
-  for(let i=0;i<data.length-4;i+=data.length/res){
-    bwModal.components[index] = ((data[i] + data[i+1] + data[i+2])/3)/255;
-    rModal.components[index] = data[i]/255
-    gModal.components[index] = data[i+1]/255
-    bModal.components[index] = data[i+2]/255
-    index+=1;
+  for (let i = 0; i < data.length - 4; i += data.length / res) {
+    bwModal.components[index] = (data[i] + data[i + 1] + data[i + 2]) / 3 / 255;
+    rModal.components[index] = data[i] / 255;
+    gModal.components[index] = data[i + 1] / 255;
+    bModal.components[index] = data[i + 2] / 255;
+    index += 1;
   }
   requestAnimationFrame(animate);
 }
