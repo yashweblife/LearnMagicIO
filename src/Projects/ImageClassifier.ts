@@ -81,7 +81,7 @@ navigator.mediaDevices
     video.play();
     animate();
   });
-const res = 10;
+const res = 100;
 const rModal = new Matrix(res);
 const gModal = new Matrix(res);
 const bModal = new Matrix(res);
@@ -93,12 +93,20 @@ interface TrainingData {
   blue: Matrix[];
   bw: Matrix[];
 }
+interface RefinedData {
+  name: string;
+  red: Matrix;
+  green: Matrix;
+  blue: Matrix;
+  bw: Matrix;
+}
 const trainingDataset: TrainingData[] = [];
-const traningButton = document.querySelector("#train-me") as HTMLButtonElement;
+const trainingButton = document.querySelector("#train-me") as HTMLButtonElement;
 const className = document.querySelector("#class-name") as HTMLInputElement;
 const predictionDiv = document.querySelector("#prediction") as HTMLElement;
-traningButton.addEventListener("click", () => {
+trainingButton.addEventListener("click", () => {
   const { value } = className;
+  gatherTrainingData(value, rModal, gModal, bModal, bwModal);
 });
 function gatherTrainingData(
   name: string,
@@ -107,26 +115,70 @@ function gatherTrainingData(
   b: Matrix,
   bw: Matrix
 ) {
-  if (trainingDataset.length > 0) {
-    const test = trainingDataset.filter(
-      (data: TrainingData) => data.name == name
-    );
-    if (test.length == 1) {
-      test[0].red.push(MatrixMath.getMatrixClone(r));
-      test[0].green.push(MatrixMath.getMatrixClone(g));
-      test[0].blue.push(MatrixMath.getMatrixClone(b));
-      test[0].bw.push(MatrixMath.getMatrixClone(bw));
-    } else {
-      const output: TrainingData = {
-        name: name,
-        red: [MatrixMath.getMatrixClone(r)],
-        green: [MatrixMath.getMatrixClone(g)],
-        blue: [MatrixMath.getMatrixClone(b)],
-        bw: [MatrixMath.getMatrixClone(bw)],
-      };
-      trainingDataset.push(output);
-    }
+  const test = trainingDataset.filter(
+    (data: TrainingData) => data.name == name
+  );
+  if (test.length == 1) {
+    test[0].red.push(MatrixMath.getMatrixClone(r));
+    test[0].green.push(MatrixMath.getMatrixClone(g));
+    test[0].blue.push(MatrixMath.getMatrixClone(b));
+    test[0].bw.push(MatrixMath.getMatrixClone(bw));
+  } else {
+    const output: TrainingData = {
+      name: name,
+      red: [MatrixMath.getMatrixClone(r)],
+      green: [MatrixMath.getMatrixClone(g)],
+      blue: [MatrixMath.getMatrixClone(b)],
+      bw: [MatrixMath.getMatrixClone(bw)],
+    };
+    trainingDataset.push(output);
+    const button = document.createElement("button")!;
+    button.innerHTML = name;
+    button.addEventListener("click", () => {
+      console.log(name);
+      gatherTrainingData(name, rModal, gModal, bModal, bwModal);
+    });
+    document.body.appendChild(button);
   }
+  console.log(trainingDataset);
+}
+function refineTrainingData(data: TrainingData) {
+  const output = {
+    name: data.name,
+    red: MatrixMath.getMatrixAverage(data.red),
+    green: MatrixMath.getMatrixAverage(data.green),
+    blue: MatrixMath.getMatrixAverage(data.blue),
+    bw: MatrixMath.getMatrixAverage(data.bw),
+  };
+  return output;
+}
+function compareRefinedToTest(inp1: RefinedData, inp2: RefinedData) {
+  const r = MatrixMath.getMatrixDistance(inp1.red, inp2.red);
+  const g = MatrixMath.getMatrixDistance(inp1.green, inp2.green);
+  const b = MatrixMath.getMatrixDistance(inp1.blue, inp2.blue);
+  const bw = MatrixMath.getMatrixDistance(inp1.bw, inp2.bw);
+  return r + g + b + bw;
+}
+function predict() {
+  if (trainingDataset.length == 0) return;
+  let d = 100000;
+  let output = ""
+  trainingDataset.forEach((data: TrainingData) => {
+    const test = refineTrainingData(data);
+    const base:RefinedData = {
+      name: "",
+      red: rModal,
+      green: gModal,
+      blue: bModal,
+      bw: bwModal,
+    };
+    let D = compareRefinedToTest(test, base);
+    if(D<d){
+      d=D;
+      output = test.name
+    }
+  });
+  predictionDiv.innerHTML = `${output} ${d}`;
 }
 function animate() {
   canvas.drawImage(video);
@@ -139,5 +191,6 @@ function animate() {
     bModal.components[index] = data[i + 2] / 255;
     index += 1;
   }
+  predict();
   requestAnimationFrame(animate);
 }
