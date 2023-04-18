@@ -95,8 +95,9 @@ interface TrainingData{
 const trainingDataset:TrainingData[] = []
 const traningButton = document.querySelector("#train-me") as HTMLButtonElement;
 const className = document.querySelector("#class-name") as HTMLInputElement;
+const predictionDiv = document.querySelector("#prediction") as HTMLElement; 
 traningButton.addEventListener("click",()=>{
-
+  
 })
 function animate() {
   canvas.drawImage(video);
