@@ -81,7 +81,7 @@ navigator.mediaDevices
     video.play();
     animate();
   });
-const res = 100;
+const res = 1000;
 const rModal = new Matrix(res);
 const gModal = new Matrix(res);
 const bModal = new Matrix(res);
