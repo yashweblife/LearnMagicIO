@@ -73,15 +73,15 @@ class Player {
     if (this.currentMotion == "strut") {
       this.acc.x = 1;
     }
-    if (this.pos.y > c.size.y -  this.size.y-1) {
+    if (this.pos.y > c.size.y - this.size.y - 1) {
       this.pos.y = c.size.y - this.size.y;
       this.vel.y = 0;
     }
-    if(this.vel.y<0.001 && this.vel.y>-0.001){
-        this.vel.y =0;
+    if (this.vel.y < 0.001 && this.vel.y > -0.001) {
+      this.vel.y = 0;
     }
-    if(this.pos.x> c.size.x){
-        this.pos.x = -this.size.x;
+    if (this.pos.x > c.size.x) {
+      this.pos.x = -this.size.x;
     }
     this.vel.mul(0.9);
     this.vel.add(this.acc);
@@ -112,10 +112,7 @@ let state = 0;
 
 function animate() {
   canvas.clearAll();
-  //   canvas.save();
-  //   canvas.setOrigin();
   player.update(canvas);
-  player.draw(canvas);
-  //   canvas.restore();
+    player.draw(canvas);
   requestAnimationFrame(animate);
 }
