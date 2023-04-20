@@ -1,3 +1,3 @@
+import "../styles/article.scss";
 import "../styles/common.scss";
-import "../styles/index.scss";
-
+import "./article";

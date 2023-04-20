@@ -1,5 +1,6 @@
-import "../styles/common.scss"
-import "../styles/article.scss"
+import "../styles/article.scss";
+import "../styles/common.scss";
+import "./article";
 
 function illus1(){
     const parent = document.createElement("div")

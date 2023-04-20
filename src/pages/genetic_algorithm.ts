@@ -1,4 +1,7 @@
 import { GeneticAlgorithm } from "../Projects/GeneticAlgo";
+import "../styles/article.scss";
+import "../styles/common.scss";
+import "./article";
 
 const app = new GeneticAlgorithm();
 const saveButton = document.querySelector("#save-button")

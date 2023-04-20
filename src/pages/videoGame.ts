@@ -1,6 +1,8 @@
 import { Canvas } from "../lib/Canvas";
 import { Vector } from "../lib/Vector/Vector";
-
+import "../styles/article.scss";
+import "../styles/common.scss";
+import "./article";
 const canvas = new Canvas();
 // canvas.setOrigin(0, canvas.size.y - 100);
 canvas.addGridLines();

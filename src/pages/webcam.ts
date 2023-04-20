@@ -1,6 +1,8 @@
 import { Vector } from "../lib/Vector/Vector";
 import { Camera } from "../Projects/Camera";
-
+import "../styles/article.scss";
+import "../styles/common.scss";
+import "./article";
 const camera = new Camera();
 const image: Vector[][] = [];
 const res = 30;
