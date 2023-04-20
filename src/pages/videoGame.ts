@@ -105,11 +105,6 @@ window.addEventListener("keydown", (e: KeyboardEvent) => {
   }
 });
 
-window.addEventListener("keyup", (e: KeyboardEvent) => {
-  state = 0;
-});
-let state = 0;
-
 function animate() {
   canvas.clearAll();
   player.update(canvas);

@@ -1,4 +1,5 @@
 import { Canvas } from "../Canvas/Canvas";
+import { lerp } from "../utils";
 import { Vector } from "./Vector";
 
 export class Line {
