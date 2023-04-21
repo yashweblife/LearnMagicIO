@@ -18,6 +18,7 @@ export default defineConfig({
                 classes:resolve(__dirname, "classes.html"),
                 collisions:resolve(__dirname, "collisions.html"),
                 datatypes:resolve(__dirname, "datatypes.html"),
+                firebase:resolve(__dirname, "firebase.html"),
                 genetic_algorithm:resolve(__dirname, "genetic_algorithm.html"),
                 gravity:resolve(__dirname, "gravity.html"),
                 image_classifier:resolve(__dirname, "image_classifier.html"),
