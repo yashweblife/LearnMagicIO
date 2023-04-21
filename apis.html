@@ -17,6 +17,34 @@
             <header>
                 <h1>What is an API?</h1>
             </header>
+            <p>
+                One of the most important things, when it comes to front end development is the ability to get data from a server/service.
+                How you do that is by using an API.
+            </p>
+            <h3>
+                Components Of API
+            </h3>
+            <p>
+                The first thing when it comes to using API's is to get an access token.
+                This token allows you to be identified by a server.
+                <br>
+                <h4>
+                    What does that mean?
+                </h4>
+                An API is generally run over a server. This server sits in a room and listens for requests.
+                Now if anyone was allowed to send a request, people could easily take advantage of this and make something like this:
+            </p>
+            <pre><code class="language-javascript">
+                while(True){
+                    makeStupidRequestToAPIService();
+                }
+            </code></pre>
+            <p>
+                This would cost the service providers a lot of money and may even crash their system.
+                So in order to protect from these things, the service providers assign you with an API key.
+                Now when you send a request to their server, they know who sent it and will be able to provide data accordingly.
+                This also means that if you do something malicious, they can either stop their service for you or charge you💲
+            </p>
         </main>
     </section>
     <footer>
