@@ -34,6 +34,8 @@ export default defineConfig({
                 video_game:resolve(__dirname, "video_game.html"),
                 web_development:resolve(__dirname, "web_development.html"),
                 webcam:resolve(__dirname, "webcam.html"),
+                neural_network:resolve(__dirname, "neural_network.html"),
+                
             }
         }
     }
