@@ -1,71 +1,35 @@
 import { Canvas } from "../lib/Canvas";
 import { Matrix, MatrixMath } from "../lib/Matrix/Matrix";
 import { Vector } from "../lib/Vector/Vector";
+import "../styles/article.scss";
+import "../styles/common.scss";
 
-// function gatherData(name: string) {
-//   //   console.log(name);
-//   const mod = trainingDataset.find((val: any) => val.name == name);
-//   const newMatrix = MatrixMath.getMatrixClone(imageMatrix);
+class ImageClassifier{
+  public video:HTMLVideoElement = document.createElement("video");
+  public canvas:Canvas;
+  public resolution:number=500;
+  constructor(parent:HTMLElement){
+    this.canvas = new Canvas({parent:parent,size:new Vector(300, 300)})
+    navigator.mediaDevices.getUserMedia({
+      video:{
+        width:300,
+        height:300
+      }
+    }).then((stream:MediaStream)=>{
+      this.video.srcObject = stream;
+      this.video.play()
+      animate();
+    })
+  }
+  public animate(){
 
-//   if (mod) {
-//     mod.data.push(newMatrix);
-//   } else {
-//     trainingDataset.push({ name: name, data: [newMatrix] } as DataSet);
-//     const b = document.createElement("button");
-//     b.innerHTML = name;
-//     b.addEventListener("click", () => {
-//       gatherData(name);
-//     });
-//     document.body.appendChild(b);
-//   }
-// }
+    requestAnimationFrame(this.animate);
+  }
+}
 
-// document.querySelector("#train-me")?.addEventListener("click", () => {
-//   let name = document.querySelector("#class-name") as HTMLInputElement;
-//   gatherData(name.value);
-// });
-
-// function predict() {
-//   if (trainingDataset.length == 0) return;
-//   let distance = 100000;
-//   let output = "";
-//   for (let i = 0; i < trainingDataset.length; i++) {
-//     if (trainingDataset[i].data.length > 1) {
-//       const avg = MatrixMath.getMatrixAverage(trainingDataset[i].data);
-//       const dist = MatrixMath.getMatrixDistance(avg, imageMatrix);
-//       if (dist < distance) {
-//         distance = dist;
-//         output = trainingDataset[i].name;
-//       }
-//     } else {
-//       const dist = MatrixMath.getMatrixDistance(trainingDataset[i].data[0], imageMatrix);
-//       if (dist < distance) {
-//         distance = dist;
-//         output = trainingDataset[i].name;
-//       }
-//     }
-//   }
-//   console.log(output, distance);
-// }
-// function animation() {
-//   canvas.drawImage(video);
-//   const { data } = canvas.getImageData();
-//   const input = [];
-//   for (let i = 0; i < data.length - 4; i += data.length / resolution) {
-//     input.push([data[i], data[i + 1], data[i + 2]]);
-//   }
-//   for (let i = 0; i < imageMatrix.components.length; i++) {
-//     const norm = input[i];
-//     const val = (norm[0] + norm[1] + norm[2]) / 3;
-//     imageMatrix.components[i] = val;
-//   }
-//   predict();
-//   requestAnimationFrame(animation);
-// }
-// animation()
 
 const canvas = new Canvas({
-  parent: document.body,
+  parent: document.getElementById("camera-holder")!,
   size: new Vector(300, 300),
 });
 const video = document.createElement("video");
