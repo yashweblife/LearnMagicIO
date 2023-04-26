@@ -13,7 +13,8 @@ export class Vector {
   constructor(
     public x: number = 0,
     public y: number = 0,
-    public z: number = 0
+    public z: number = 0,
+    public w: number = 0
   ) {
     this.x = x;
     this.y = y;
@@ -156,7 +157,10 @@ export class Vector {
     return new Vector(this.x * val, this.y * val, this.z * val);
   }
   public static getRandom(mag: number = 1) {
-    return new Vector((Math.random()-0.5)*2 * mag, (Math.random()-0.5)*2 * mag);
+    return new Vector(
+      (Math.random() - 0.5) * 2 * mag,
+      (Math.random() - 0.5) * 2 * mag
+    );
   }
 }
 
@@ -193,6 +197,20 @@ export class VectorMath {
       a.y,
       -a.x * Math.sin(b) + a.z * Math.cos(b)
     );
+  }
+  public static getAverageVector(a:Vector[]){
+    const output:Vector = new Vector();
+    for(let i=0;i<a.length;i++){
+      output.x+=a[i].x
+      output.y+=a[i].y
+      output.z+=a[i].z
+      output.w+=a[i].w
+    }
+    output.x/=a.length
+    output.y/=a.length
+    output.z/=a.length
+    output.w/=a.length
+    return(output)
   }
   public static getVectorRotateZ(a: Vector, b: number = 0) {
     return new Vector(
