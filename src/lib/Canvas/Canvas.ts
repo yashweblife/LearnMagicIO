@@ -62,6 +62,12 @@ export class Canvas {
     this.dom.addEventListener("mouseleave", () => {
       this.mouse.z = 0;
     });
+    this.dom.addEventListener("mousedown", () => {
+      this.mouse.w = 1;
+    });
+    this.dom.addEventListener("mouseup", () => {
+      this.mouse.w = 0;
+    });
     window.addEventListener("scroll", () => {
       this.recalibrate();
     });
