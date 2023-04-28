@@ -32,6 +32,7 @@ const canvas = new Canvas({
   parent: document.getElementById("camera-holder")!,
   size: new Vector(300, 300),
 });
+const visual = new Canvas({parent:document.getElementById('visualizer')!,size:new Vector(300, 500)})
 const video = document.createElement("video");
 navigator.mediaDevices
   .getUserMedia({
@@ -45,7 +46,7 @@ navigator.mediaDevices
     video.play();
     animate();
   });
-const res = 1000;
+const res = 400;
 const rModal = new Matrix(res);
 const gModal = new Matrix(res);
 const bModal = new Matrix(res);
@@ -146,15 +147,49 @@ function predict() {
 }
 function animate() {
   canvas.drawImage(video);
+  visual.clearAll();
   const { data } = canvas.getImageData();
   let index = 0;
   for (let i = 0; i < data.length - 4; i += data.length / res) {
-    bwModal.components[index] = (data[i] + data[i + 1] + data[i + 2]) / 3 / 255;
-    rModal.components[index] = data[i] / 255;
+    bwModal.components[index] = (data[i + 0] + data[i + 1] + data[i + 2]) / 3 / 255;
+    rModal.components[index] = data[i + 0] / 255;
     gModal.components[index] = data[i + 1] / 255;
     bModal.components[index] = data[i + 2] / 255;
     index += 1;
   }
+  let x_plot = 0;
+  let y_plot = 0;
+  for(let i=0; i<bwModal.size;i++){
+    let bwVal = bwModal.components[i];
+    let rVal = rModal.components[i];
+    let gVal = gModal.components[i];
+    let bVal = bModal.components[i];
+    const mag = 5;
+    visual.start();
+    // visual.rect(new Vector(i * (300/bwModal.size), 300-(mag*2)), new Vector((300/bwModal.size),  -bwVal*mag));
+    visual.arc(new Vector(((x_plot))* mag*2, (y_plot)*mag*2),mag);
+    visual.fill(`rgb(${rVal*255}, ${gVal*255}, ${bVal*255})`);
+    visual.end();
+    x_plot+=1;
+    if(x_plot>=Math.sqrt(res)){
+      x_plot=0;
+      y_plot+=1;
+    }
+    // visual.start();
+    // visual.rect(new Vector(i* (300/rModal.size), 300-(mag*4)), new Vector((300/rModal.size),-rVal*mag));
+    // visual.fill(`rgb(${Math.floor(rVal*255)}, 0, 0)`);
+    // // visual.end();
+    // visual.start();
+    // visual.rect(new Vector(i* (300/gModal.size), 300-(mag*6)), new Vector((300/gModal.size), -gVal*mag));
+    // visual.fill(`rgb(0, ${Math.floor(gVal*255)},0)`);
+    // // visual.end();
+    // visual.start();
+    // visual.rect(new Vector(i* (300/bModal.size), 300-(mag*8)), new Vector((300/bModal.size), -bVal*mag));
+    // visual.fill(`rgb(0, 0, ${Math.floor(bVal*255)})`);
+    // visual.end();
+  }
+
+
   predict();
   requestAnimationFrame(animate);
 }
